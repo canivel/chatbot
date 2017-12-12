@@ -10,6 +10,9 @@ db = pg.Db()
 start_row = 0
 cleanup = 1000000
 
+dataset_root_path = 'B:/datasets/reddit/'
+
+
 def format_data(data):
     data = data.replace('\n',' newlinechar ').replace('\r',' newlinechar ').replace('"',"'")
     return data
@@ -96,7 +99,7 @@ if __name__ == '__main__':
     paired_rows = 0
 
     for timeframe in timeframes:
-        with open('B:/datasets/reddit/{}/RC_{}'.format(timeframe.split('-')[0], timeframe), buffering=1000) as f:
+        with open(dataset_root_path+'{}/RC_{}'.format(timeframe.split('-')[0], timeframe), buffering=1000) as f:
             for row in f:
                 row_counter += 1
                 if row_counter > start_row:
